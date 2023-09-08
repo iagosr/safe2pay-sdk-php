@@ -244,7 +244,7 @@ class Merchant implements \JsonSerializable
 
 	public function JsonSerialize()
 	{
-		return [
+		$json = [
 			'Id' => (int) $this->Id,
 			'Name' => (string) $this->Name,
 			'CommercialName' => (string) $this->CommercialName,
@@ -261,5 +261,12 @@ class Merchant implements \JsonSerializable
 			'IsPanelRestricted' => $this->IsPanelRestricted,
 			'IsTransferCheckingAccountDisabled' => $this->IsTransferCheckingAccountDisabled
 		];
+
+		if ($this->Id) {
+			unset($json['Name']);
+			unset($json['Identity']);
+		}
+
+		return $json;
 	}
 }
