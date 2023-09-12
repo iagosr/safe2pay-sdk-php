@@ -16,7 +16,6 @@ class Merchant implements \JsonSerializable
 	public $Identity;
 	public $ResponsibleName;
 	public $ResponsibleIdentity;
-	public $ResponsiblePhone;
 	public $Email;
 	public $TechName;
 	public $TechIdentity;
@@ -91,16 +90,6 @@ class Merchant implements \JsonSerializable
 	public function setResponsibleIdentity($ResponsibleIdentity)
 	{
 		$this->ResponsibleIdentity = $ResponsibleIdentity;
-	}
-
-	public function getResponsiblePhone()
-	{
-		return $this->ResponsiblePhone;
-	}
-
-	public function setResponsiblePhone($ResponsiblePhone)
-	{
-		$this->ResponsiblePhone = $ResponsiblePhone;
 	}
 
 	public function getEmail()
@@ -255,35 +244,22 @@ class Merchant implements \JsonSerializable
 
 	public function JsonSerialize()
 	{
-		if (!$this->Id) {
-			return [
-				'Id' => (int) $this->Id,
-				'Name' => (string) $this->Name,
-				'CommercialName' => (string) $this->CommercialName,
-				'Identity' => (string) $this->Identity,
-				'ResponsibleName' => (string) $this->ResponsibleName,
-				'ResponsibleIdentity' => (string) $this->ResponsibleIdentity,
-				'ResponsiblePhone' => $this->ResponsiblePhone,
-				'Email' => (string) $this->Email,
-				'TechName' => (string) $this->TechName,
-				'TechIdentity' => (string)  $this->TechIdentity,
-				'TechEmail' => (string) $this->TechEmail,
-				'Address' => $this->Address,
-				'BankData' => $this->BankData,
-				'MerchantSplit' => $this->MerchantSplit,
-				'IsPanelRestricted' => $this->IsPanelRestricted,
-				'IsTransferCheckingAccountDisabled' => $this->IsTransferCheckingAccountDisabled
-			];
-		} else {
-			return [
-				'Id' => (int) $this->Id,
-				'ResponsiblePhone' => $this->ResponsiblePhone,
-				'BankData' => $this->BankData,
-				'Address' => $this->Address,
-				'MerchantSplit' => $this->MerchantSplit,
-				'IsPanelRestricted' => $this->IsPanelRestricted,
-				'IsTransferCheckingAccountDisabled' => $this->IsTransferCheckingAccountDisabled
-			];
-		}
+		return [
+			'Id' => (int) $this->Id,
+			'Name' => (string) $this->Name,
+			'CommercialName' => (string) $this->CommercialName,
+			'Identity' => (string) $this->Identity,
+			'ResponsibleName' => (string) $this->ResponsibleName,
+			'ResponsibleIdentity' => (string) $this->ResponsibleIdentity,
+			'Email' => (string) $this->Email,
+			'TechName' => (string) $this->TechName,
+			'TechIdentity' => (string)  $this->TechIdentity,
+			'TechEmail' => (string) $this->TechEmail,
+			'Address' => $this->Address,
+			'BankData' => $this->BankData,
+			'MerchantSplit' => $this->MerchantSplit,
+			'IsPanelRestricted' => $this->IsPanelRestricted,
+			'IsTransferCheckingAccountDisabled' => $this->IsTransferCheckingAccountDisabled
+		];
 	}
 }
