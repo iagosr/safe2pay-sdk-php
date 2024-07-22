@@ -125,7 +125,7 @@ class Base
     public function setPaymentMethod($Code)
     {
         if ($Code != null) {
-            $this->PaymentMethod = new PaymentMethod($Code);
+            $this->PaymentMethod = $Code;
         }
     }
 
